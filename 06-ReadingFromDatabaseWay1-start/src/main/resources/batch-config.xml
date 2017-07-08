@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<import resource="classpath:batch-infrastructure-config.xml"/>
+
+<!-- Job defined -->
+
+<batch:job id="readWriteProducts">
+	<batch:step id="readWrite">
+		<batch:tasklet>
+			<batch:chunk reader="productReader" writer="productDatabaseWriter" commit-interval="3"/>
+		</batch:tasklet>
+	</batch:step>
+</batch:job>
+
+
+<!-- Reader defined -->
+
+<bean id="productReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+
+<!--  Todo 1 : Configure a property “dataSource” , it should refer dataSource( it is already defined in 
+infrastructure-config.xml so no need to define again , you just need to specify the name in reference)-->
+	<property name="sql" value="select id,name,description,price from productOld"/>
+	
+<!-- Todo 2 :  Configure a property “sql” , specify the select statement in the value i.e. 
+"select id,name,description,price from productOld"  -->
+	
+<!-- Todo 3: Configure a property rowMapper and refer to "com.way2learnonline.batch.support.ProductRowMapper"
+ (custom class)
+ -->
+ 
+</bean>
+
+
+<!-- Writer declared -->
+<bean id="productDatabaseWriter" class="com.way2learnonline.batch.Writer.ProductJdbcItemWriter"/>
+
+
+</beans>

@@ -1,0 +1,426 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.way2learnonline</groupId>
+  <artifactId>way2learnonlineEnt-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  
+  <properties>
+
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+	
+
+	</properties>
+	
+	<dependencies>
+	
+	<!-- Batch -->
+	
+	 <dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-infrastructure</artifactId>
+	</dependency>
+	
+	<!-- Quartz -->
+	
+	<!-- QuartzJobBean in spring-context-support.jar -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+	</dependency>
+	
+	<!-- Quartz framework -->
+	<dependency>
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz</artifactId>
+	</dependency>
+	
+	<!-- Integration -->
+	
+	<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-java-dsl</artifactId>
+		</dependency>
+	
+	
+		
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-core</artifactId>
+		</dependency>
+		
+	
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-file</artifactId>
+			 
+		</dependency>
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-jms</artifactId>
+			  
+		</dependency>
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-ws</artifactId>
+		
+		</dependency>
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-xml</artifactId>
+			 
+		</dependency>
+		
+		<dependency>
+			 <groupId>org.springframework.integration</groupId>
+			 <artifactId>spring-integration-jdbc</artifactId>
+			 
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-test</artifactId>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-http</artifactId>
+			
+		</dependency>
+            
+	
+        
+	     <dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-stream</artifactId>
+			
+		</dependency>
+	
+	<!-- JMS and ActiveMQ -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jms</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.activemq</groupId>
+	    <artifactId>activemq-core</artifactId>
+	    <version>5.7.0</version>
+  	</dependency>
+  	
+  	<dependency>
+	    <groupId>org.apache.activemq</groupId>
+	    <artifactId>activemq-broker</artifactId>
+	</dependency>
+	
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			
+		</dependency>
+
+		<!-- Logging with SLF4J & Log4j -->
+		
+		
+		<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+		</dependency> 
+		
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		</dependency>
+		
+		<!-- Hibernate -->
+		
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+    	
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		</dependency> 
+		
+		<dependency>
+		   <groupId>org.glassfish.web</groupId>
+		   <artifactId>javax.el</artifactId>
+		   <version>2.2.4</version>
+		</dependency> 
+		
+		<!-- For Spring Data -->
+		
+		<dependency>
+	    	<groupId>org.springframework.data</groupId>
+	    	<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+	
+
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-commons</artifactId>
+	    </dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		
+	<!-- For BasicDataSource -->
+		
+	<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+	</dependency>
+
+		
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Test Artifacts -->
+		
+		<dependency>
+	    <groupId>org.springframework.hateoas</groupId>
+	    <artifactId>spring-hateoas</artifactId>
+	
+	</dependency>
+	
+	<!-- Jackson libraries for JSON-->
+		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-core</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		
+		 <dependency>
+        	<groupId>com.fasterxml.jackson.core</groupId>
+        	<artifactId>jackson-databind</artifactId>
+    	</dependency> 
+    	
+    	<dependency>
+    		<groupId>org.codehaus.jackson</groupId>
+    		<artifactId>jackson-mapper-asl</artifactId>
+    	
+    	</dependency>
+    	
+    	<!-- Jackson libraries for XML -->
+    	<dependency>
+        	<groupId>com.fasterxml.jackson.module</groupId>
+        	<artifactId>jackson-module-jaxb-annotations</artifactId>
+        	<version>2.6.0</version> 
+    	</dependency>
+		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.dataformat</groupId>
+    		<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-oxm</artifactId>
+		</dependency>
+	
+	<!-- Jackson libraries for XML -->
+    	<dependency>
+        	<groupId>com.fasterxml.jackson.module</groupId>
+        	<artifactId>jackson-module-jaxb-annotations</artifactId>
+        	<version>2.6.7</version> 
+    	</dependency>
+		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.dataformat</groupId>
+    		<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-oxm</artifactId>
+		</dependency>
+		
+		
+			<dependency>
+			    <groupId>javax.xml.bind</groupId>
+			    <artifactId>jaxb-api</artifactId>
+			    <version>2.2.12</version>
+			</dependency>
+	<!-- MySQL -->
+	
+	 <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.35 </version>
+		</dependency>	
+		
+	<!-- Atomikos Transaction Manager -->
+	
+	
+		
+	
+	  <dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>atomikos-util</artifactId>
+	   	<version>4.0.4</version>
+	  </dependency>
+	  
+	 <dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>transactions</artifactId>
+	     <version>4.0.4</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>transactions-api</artifactId>
+	     <version>4.0.4</version>
+    </dependency>
+	
+	<dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>transactions-jta</artifactId>
+	     <version>4.0.4</version>
+    </dependency>
+    
+    <dependency>
+	<groupId>com.atomikos</groupId>
+	<artifactId>transactions-hibernate4</artifactId>
+	<version>4.0.4</version>
+ 	<exclusions>
+		<exclusion>
+			<artifactId>hibernate</artifactId>
+			<groupId>org.hibernate</groupId>
+		</exclusion>
+	</exclusions> 
+</dependency>
+    
+    <dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>transactions-jdbc</artifactId>
+	     <version>4.0.4</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>com.atomikos</groupId>
+	    <artifactId>transactions-jms</artifactId>
+	     <version>4.0.4</version>
+    </dependency>
+     
+  	
+    <dependency>
+		<groupId>org.codehaus.woodstox</groupId>
+		<artifactId>woodstox-core-asl</artifactId>
+	</dependency>
+		
+	<!-- JSP/Servlet/JSTL -->
+	
+	<!-- 	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>	
+			<version>3.1.0</version>		
+		</dependency>
+
+		<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.2</version>
+				
+		</dependency>
+	
+		<dependency>
+	    	<groupId>jstl</groupId>
+	    	<artifactId>jstl</artifactId>
+	   	 	<version>1.2</version>
+		</dependency> -->
+
+	</dependencies>	
+	
+	<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.spring.platform</groupId>
+            <artifactId>platform-bom</artifactId>
+            <version>2.0.7.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+  
+    <build>
+		<plugins>
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>		       
+		        <configuration>
+		          <source>1.8</source>
+		          <target>1.8</target>
+		        </configuration>
+		      </plugin>	 
+		      <!-- When web.xml is not present during java configuration , so error comes - this config is to avoid this -->
+		      <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>2.6</version>
+	            <configuration>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
+	            </configuration>
+        	 </plugin>     
+		    </plugins> 
+	</build>
+  
+
+    
+</project>

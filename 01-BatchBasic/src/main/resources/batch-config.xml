@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<import resource="classpath:batch-infrastructure-config.xml"/>
+
+<!-- Job defined -->
+
+<batch:job id="readWriteProducts">
+	<batch:step id="readWrite">
+		<batch:tasklet>
+			<batch:chunk reader="productFileReader" writer="productDatabaseWriter" commit-interval="3"/>
+		</batch:tasklet>
+	</batch:step>
+</batch:job>
+
+
+<!-- Reader defined -->
+<bean id="productFileReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+	<property name="resource" value="classpath:Files/products.txt"/>
+	<property name="linesToSkip" value="1"/>
+	<property name="lineMapper">
+		<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+			<property name="lineTokenizer">
+				<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+					<property name="names" value="ID,NAM,DESCRIPTION,PRICE"/>
+				</bean>
+			</property>
+			<property name="fieldSetMapper">
+				<bean class="com.way2learnonline.batch.support.ProductFieldSetMapper"/>
+			</property>
+		</bean>
+	
+	</property>
+</bean>
+
+
+<!-- Writer declared -->
+<bean id="productDatabaseWriter" class="com.way2learnonline.batch.Writer.ProductJdbcItemWriter"/>
+
+
+</beans>

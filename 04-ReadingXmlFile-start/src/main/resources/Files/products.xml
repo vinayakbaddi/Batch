@@ -1,0 +1,20 @@
+<products>
+	<product>
+		<id>PR....210</id>
+		<name>BlackBerry 8100 Pearl</name>
+		<description>Desc1</description>
+		<price>1000</price>
+	</product>
+	<product>
+		<id>PR....212</id>
+		<name>Samsung MM-A900M Ace</name>
+		<description>Desc2</description>
+		<price>2000</price>
+	</product>
+	<product>
+		<id>PR....213</id>
+		<name>Toshiba M285-E 14</name>
+		<description>Desc3</description>
+		<price>3000</price>
+	</product>
+</products>

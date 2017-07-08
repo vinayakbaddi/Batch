@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<import resource="classpath:batch-infrastructure-config.xml"/>
+
+<!-- Job defined -->
+
+<batch:job id="readWriteProducts">
+	<batch:step id="readWrite">
+		<batch:tasklet>
+			<batch:chunk reader="productReader" writer="productDatabaseWriter" commit-interval="3"/>
+		</batch:tasklet>
+	</batch:step>
+</batch:job>
+
+
+<!-- Reader defined -->
+
+<bean id="productReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	<property name="dataSource" ref="dataSource"/>
+	<property name="sql" value="select id,name,description,price from productOld"/>
+	<property name="rowMapper">
+		<bean class="com.way2learnonline.batch.support.ProductRowMapper"/>
+	</property>
+</bean>
+
+
+<!-- Writer declared -->
+<bean id="productDatabaseWriter" class="com.way2learnonline.batch.Writer.ProductJdbcItemWriter"/>
+
+
+</beans>

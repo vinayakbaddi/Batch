@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<import resource="classpath:batch-infrastructure-config.xml"/>
+
+<!-- Job defined -->
+<!-- Using Skip Listener to log error-->
+<batch:job id="readWriteProducts">
+	<batch:step id="readWrite">
+		<batch:tasklet>
+			<batch:chunk reader="productFileReader" writer="productDatabaseWriter" commit-interval="3" skip-limit="4">
+				<batch:skippable-exception-classes>
+					<batch:include class="org.springframework.batch.item.file.FlatFileParseException"/>
+				</batch:skippable-exception-classes>
+			</batch:chunk>
+			<!-- 
+			TODO 2 :
+			within <batch:tasklet> of “readWrite” step , specify <batch:listeners> tag and have reference to skipListener
+			 -->
+			<batch:listeners>
+				<batch:listener ref="skipListener"/>
+			</batch:listeners>
+		</batch:tasklet>
+	</batch:step>
+</batch:job>
+
+<bean id="skipListener" class="com.way2learnonline.batch.support.DatabaseSkipListener"/>
+
+<!-- Reader defined -->
+<bean id="productFileReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+	<property name="resource" value="classpath:Files/products.txt"/>
+	<property name="linesToSkip" value="1"/>
+	<property name="lineMapper">
+		<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+			<property name="lineTokenizer">
+				<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+					<property name="names" value="ID,NAME,DESCRIPTION,PRICE"/>
+				</bean>
+			</property>
+			<property name="fieldSetMapper">
+				<bean class="com.way2learnonline.batch.support.ProductFieldSetMapper"/>
+			</property>
+		</bean>
+	
+	</property>
+</bean>
+
+<!-- Writer Defined -->
+<bean id="productDatabaseWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+	<property name="itemSqlParameterSourceProvider"> <!-- sql parameter values from named parameters -->
+		<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/><!--  bind item properties to SQL parameter names from JavaBeans properties. -->
+	</property>
+	 <property name="sql" value="INSERT INTO PRODUCT (ID, NAME, PRICE) VALUES(:id, :name, :price)"/>
+	 <property name="dataSource" ref="dataSource"/>
+</bean>
+
+</beans>
